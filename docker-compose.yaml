@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+#    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: god
+      MYSQL_PASSWORD: isdead
+      MYSQL_DATABASE: earth
+    volumes:
+      - ./backup:/var/lib/mysql
+
+  client:
+    image: mysql
+    entrypoint: ["bash"]
+    restart: always
+    tty: true
+    stdin_open: true
